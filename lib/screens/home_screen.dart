@@ -7,7 +7,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       appBar: AppBar(
         //   backgroundColor: Colors.deepOrangeAccent,
         leading: IconButton(
@@ -26,6 +25,18 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             onPressed: () {},
+          )
+        ],
+      ),
+      body: ListView(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(width: 8),
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
           )
         ],
       ),
