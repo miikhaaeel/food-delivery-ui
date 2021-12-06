@@ -30,11 +30,32 @@ class HomeScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderSide: const BorderSide(width: 8),
-                borderRadius: BorderRadius.circular(30),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: TextField(
+              decoration: InputDecoration(
+                contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
+                fillColor: Colors.white,
+                filled: true,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 0.8,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                hintText: "Search food or restaurant",
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: IconButton(
+                  icon: const Icon(
+                    Icons.clear,
+                  ),
+                  onPressed: () {},
+                ),
+                border: OutlineInputBorder(
+                  borderSide: const BorderSide(width: 0.8),
+                  borderRadius: BorderRadius.circular(30),
+                ),
               ),
             ),
           )
