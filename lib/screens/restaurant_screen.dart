@@ -16,16 +16,77 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
   Widget _buildMenuItem(Food food) {
     return Center(
       child: Stack(
+        alignment: Alignment.center,
         children: [
           Container(
             height: 175,
             width: 175,
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(food.imageUrl),
+                image: DecorationImage(
+                  image: AssetImage(food.imageUrl),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(15.0)),
+          ),
+          Container(
+            height: 175,
+            width: 175,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+                  Colors.black.withOpacity(0.5),
+                  Colors.black87.withOpacity(0.5),
+                  Colors.black54.withOpacity(0.5),
+                  Colors.black38.withOpacity(0.5),
+                ],
+                stops: const [0.1, 0.4, 0.6, 0.9],
               ),
             ),
           ),
+          Positioned(
+            bottom: 65,
+            child: Column(
+              children: [
+                Text(
+                  food.name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: -0.2,
+                  ),
+                ),
+                Text(
+                  '\$${food.price}',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: -0.2,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 5,
+            right: 5,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(40.0),
+              ),
+              child: IconButton(
+                icon: const Icon(Icons.add),
+                iconSize: 30.0,
+                color: Colors.white,
+                onPressed: () {},
+              ),
+            ),
+          )
         ],
       ),
     );
