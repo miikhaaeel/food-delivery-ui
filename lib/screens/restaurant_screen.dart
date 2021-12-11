@@ -13,6 +13,7 @@ class RestaurantScreen extends StatefulWidget {
 }
 
 class _RestaurantScreenState extends State<RestaurantScreen> {
+  
   Widget _buildMenuItem(Food food) {
     return Center(
       child: Stack(
