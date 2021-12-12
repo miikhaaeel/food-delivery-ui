@@ -51,43 +51,45 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.all(12.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        restaurant.name,
-                        style: const TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.all(12.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          restaurant.name,
+                          style: const TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 4.0,
-                      ),
-                      RatingStars(
-                        ratings: restaurant.rating,
-                      ),
-                      Text(
-                        restaurant.address,
-                        style: const TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
-                          overflow: TextOverflow.ellipsis,
+                        const SizedBox(
+                          height: 4.0,
                         ),
-                      ),
-                      const SizedBox(height: 4.0),
-                      const Text(
-                        '0.2 miles away',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
-                          overflow: TextOverflow.ellipsis,
+                        RatingStars(
+                          ratings: restaurant.rating,
                         ),
-                      ),
-                    ],
+                        Text(
+                          restaurant.address,
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        const SizedBox(height: 4.0),
+                        const Text(
+                          '0.2 miles away',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],
@@ -122,7 +124,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_)=> CartScreen()));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const CartScreen(),
+                ),
+              );
             },
           )
         ],
