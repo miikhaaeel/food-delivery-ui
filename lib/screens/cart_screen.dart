@@ -126,24 +126,81 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double totalPrice = 0;
+    for (var order in currentUser.cart) {
+      totalPrice += order.quantity * order.food.price;
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
         title: Text('Cart (${currentUser.cart.length})'),
       ),
       body: ListView.separated(
-          physics: const BouncingScrollPhysics(),
-          itemBuilder: (context, index) {
+        itemCount: currentUser.cart.length + 1,
+        physics: const BouncingScrollPhysics(),
+        itemBuilder: (context, index) {
+          if (index < currentUser.cart.length) {
             Order order = currentUser.cart[index];
             return _buildCartItem(order);
-          },
-          separatorBuilder: (context, index) {
-            return const Divider(
-              color: Colors.grey,
-              height: 1.0,
-            );
-          },
-          itemCount: currentUser.cart.length),
+          }
+
+          return Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text(
+                      'Estimated Delivery Time: ',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      '25 mins',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Total Cost: ',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      '\$${totalPrice.toStringAsFixed(2)}',
+                      style: TextStyle(
+                        color: Colors.green[700],
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+        separatorBuilder: (context, index) {
+          return const Divider(
+            color: Colors.grey,
+            height: 1.0,
+          );
+        },
+      ),
     );
   }
 }
