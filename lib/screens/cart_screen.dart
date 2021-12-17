@@ -137,6 +137,12 @@ class _CartScreenState extends State<CartScreen> {
       ),
       body: ListView.separated(
         itemCount: currentUser.cart.length + 1,
+        separatorBuilder: (context, index) {
+          return const Divider(
+            color: Colors.grey,
+            height: 1.0,
+          );
+        },
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           if (index < currentUser.cart.length) {
@@ -190,16 +196,35 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   ],
                 ),
+                const SizedBox(height: 80)
               ],
             ),
           );
         },
-        separatorBuilder: (context, index) {
-          return const Divider(
-            color: Colors.grey,
-            height: 1.0,
-          );
-        },
+      ),
+      bottomSheet: Container(
+        height: 80,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          boxShadow: const [
+            BoxShadow(
+                color: Colors.black26, offset: Offset(0, -1), blurRadius: 6.0),
+          ],
+        ),
+        child: Center(
+          child: TextButton(
+            onPressed: () {},
+            child: const Text(
+              'CHECKOUT',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2.0),
+            ),
+          ),
+        ),
       ),
     );
   }
